@@ -1,87 +1,279 @@
-<!doctype html>
-<html>
-<head>
-  <style type="text/css">
-#customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
-
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-  </style>
-</head>
 <body>
-   <script>
-
-var _table_ = document.createElement('table'),
-    _tr_ = document.createElement('tr'),
-    _th_ = document.createElement('th'),
-    _td_ = document.createElement('td');
-
-// Builds the HTML Table out of myList json data from Ivy restful service.
- function buildHtmlTable(arr) {
-     var table = _table_.cloneNode(false),
-         columns = addAllColumnHeaders(arr, table);
-     for (var i=0, maxi=arr.length; i < maxi; ++i) {
-         var tr = _tr_.cloneNode(false);
-         for (var j=0, maxj=columns.length; j < maxj ; ++j) {
-             var td = _td_.cloneNode(false);
-                 cellValue = arr[i][columns[j]];
-             td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
-             tr.appendChild(td);
-         }
-         table.appendChild(tr);
-     }
-     return table;
- }
- 
- // Adds a header row to the table and returns the set of columns.
- // Need to do union of keys from all records as some records may not contain
- // all records
- function addAllColumnHeaders(arr, table)
- {
-     var columnSet = [],
-         tr = _tr_.cloneNode(false);
-     for (var i=0, l=arr.length; i < l; i++) {
-         for (var key in arr[i]) {
-             if (arr[i].hasOwnProperty(key) && columnSet.indexOf(key)===-1) {
-                 columnSet.push(key);
-                 var th = _th_.cloneNode(false);
-                 th.appendChild(document.createTextNode(key));
-                 tr.appendChild(th);
-             }
-         }
-     }
-     table.appendChild(tr);
-     return columnSet;
- }
-
-var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-
-fetch("http://ambevalfa.cs.veltrac.com.br:4865/v2/vigencias?inicio=2021-03-10 10:00:01&fim=2021-03-10 10:10:03", requestOptions)
-  .then(response => response.text())
-  .then(result => document.body.appendChild(buildHtmlTable(JSON.parse(result))))
-  .catch(error => console.log('error', error));
-
-  </script>
+   <table>
+      <tr>
+         <th>data_fim</th>
+         <th>cpf</th>
+         <th>data_inicio</th>
+         <th>id</th>
+         <th>origem</th>
+         <th>data_modificacao</th>
+         <th>cliente_id_motorista</th>
+         <th>codigoIntegracao</th>
+         <th>placa</th>
+      </tr>
+      <tr>
+         <td>1615395780000</td>
+         <td>04559063435</td>
+         <td>1615370940000</td>
+         <td>9587868</td>
+         <td></td>
+         <td>1615399716487</td>
+         <td>9244</td>
+         <td>944735</td>
+         <td>OCR7454</td>
+      </tr>
+      <tr>
+         <td>1615404480000</td>
+         <td>04856898558</td>
+         <td>1615284006000</td>
+         <td>9583410</td>
+         <td></td>
+         <td>1615406916880</td>
+         <td>9370</td>
+         <td>2669953</td>
+         <td>PVE1562</td>
+      </tr>
+      <tr>
+         <td>1615379340000</td>
+         <td>04841822500</td>
+         <td>1615199926000</td>
+         <td>9580326</td>
+         <td></td>
+         <td>1615381672963</td>
+         <td>11951</td>
+         <td>1872606</td>
+         <td>PDY6770</td>
+      </tr>
+      <tr>
+         <td>1615379640000</td>
+         <td>04841822500</td>
+         <td>1615379340001</td>
+         <td>9587577</td>
+         <td>8</td>
+         <td>1615379677223</td>
+         <td>11951</td>
+         <td>-1</td>
+         <td>PDY6770</td>
+      </tr>
+      <tr>
+         <td>1615381429000</td>
+         <td>38852950400</td>
+         <td>1615381319000</td>
+         <td>9588435</td>
+         <td>8</td>
+         <td>1615381477583</td>
+         <td>16458</td>
+         <td>-1</td>
+         <td>PDX5877</td>
+      </tr>
+      <tr>
+         <td>1615326452000</td>
+         <td>03993888421</td>
+         <td>1615283252000</td>
+         <td>9583418</td>
+         <td></td>
+         <td>1615381203290</td>
+         <td>9217</td>
+         <td>2460164</td>
+         <td>PNP7075</td>
+      </tr>
+      <tr>
+         <td>1615342707000</td>
+         <td>95842810387</td>
+         <td>1615299507000</td>
+         <td>9584882</td>
+         <td>7</td>
+         <td>1615381204610</td>
+         <td>13743</td>
+         <td>-1</td>
+         <td>PMU7091</td>
+      </tr>
+      <tr>
+         <td>1615282371000</td>
+         <td>01854766430</td>
+         <td>1615239171000</td>
+         <td>9587125</td>
+         <td>7</td>
+         <td>1615381203103</td>
+         <td>13890</td>
+         <td>-1</td>
+         <td>POU6529</td>
+      </tr>
+      <tr>
+         <td>1615381534000</td>
+         <td>93879849587</td>
+         <td>1615368942000</td>
+         <td>9587118</td>
+         <td>8</td>
+         <td>1615381545167</td>
+         <td>14331</td>
+         <td>-1</td>
+         <td>PCC7426</td>
+      </tr>
+      <tr>
+         <td>1615381428000</td>
+         <td>01922493554</td>
+         <td>1615381347000</td>
+         <td>9588436</td>
+         <td>8</td>
+         <td>1615381477227</td>
+         <td>13807</td>
+         <td>-1</td>
+         <td>QRJ6D92</td>
+      </tr>
+      <tr>
+         <td>1615381338000</td>
+         <td>83210580510</td>
+         <td>1615367490000</td>
+         <td>9587074</td>
+         <td>8</td>
+         <td>1615381351270</td>
+         <td>13882</td>
+         <td>-1</td>
+         <td>QYA3252</td>
+      </tr>
+      <tr>
+         <td>1615381523000</td>
+         <td>94844399500</td>
+         <td>1615380624000</td>
+         <td>9588416</td>
+         <td>8</td>
+         <td>1615381543957</td>
+         <td>13882</td>
+         <td>-1</td>
+         <td>QYA3732</td>
+      </tr>
+      <tr>
+         <td>1615381428000</td>
+         <td>02069569594</td>
+         <td>1615380528000</td>
+         <td>9588412</td>
+         <td>8</td>
+         <td>1615381452210</td>
+         <td>13882</td>
+         <td>-1</td>
+         <td>QYA3852</td>
+      </tr>
+      <tr>
+         <td>1615381220000</td>
+         <td>59883316534</td>
+         <td>1615380043000</td>
+         <td>9588389</td>
+         <td>8</td>
+         <td>1615381233103</td>
+         <td>13882</td>
+         <td>-1</td>
+         <td>QYA4382</td>
+      </tr>
+      <tr>
+         <td>1615376766000</td>
+         <td>59074477534</td>
+         <td>1615367553000</td>
+         <td>9587076</td>
+         <td>8</td>
+         <td>1615381350510</td>
+         <td>13807</td>
+         <td>-1</td>
+         <td>QRJ5H86</td>
+      </tr>
+      <tr>
+         <td>1615277057000</td>
+         <td>37112589304</td>
+         <td>1615233857000</td>
+         <td>9582148</td>
+         <td>7</td>
+         <td>1615381202947</td>
+         <td>13631</td>
+         <td>-1</td>
+         <td>PNV4724</td>
+      </tr>
+      <tr>
+         <td>1615380746000</td>
+         <td>05314579405</td>
+         <td>1615329054000</td>
+         <td>9586709</td>
+         <td>7</td>
+         <td>1615381226163</td>
+         <td>13890</td>
+         <td>-1</td>
+         <td>POG5825</td>
+      </tr>
+      <tr>
+         <td>1615381632000</td>
+         <td>40237800306</td>
+         <td>1615381366000</td>
+         <td>9588437</td>
+         <td>8</td>
+         <td>1615381653340</td>
+         <td>13744</td>
+         <td>-1</td>
+         <td>QYA3805</td>
+      </tr>
+      <tr>
+         <td>1615381249000</td>
+         <td>01772992585</td>
+         <td>1615380159000</td>
+         <td>9588393</td>
+         <td>8</td>
+         <td>1615381299833</td>
+         <td>14223</td>
+         <td>-1</td>
+         <td>QRK4A35</td>
+      </tr>
+      <tr>
+         <td>1615377841000</td>
+         <td>71882782291</td>
+         <td>1615329846000</td>
+         <td>9586472</td>
+         <td>7</td>
+         <td>1615381427097</td>
+         <td>16112</td>
+         <td>-1</td>
+         <td>PNR8656</td>
+      </tr>
+      <tr>
+         <td>1615379710000</td>
+         <td>03935341466</td>
+         <td>1615371563000</td>
+         <td>9587775</td>
+         <td></td>
+         <td>1615381672857</td>
+         <td>9560</td>
+         <td>496574</td>
+         <td>QYJ4B46</td>
+      </tr>
+      <tr>
+         <td>1615379871000</td>
+         <td>03935341466</td>
+         <td>1615379710001</td>
+         <td>9587426</td>
+         <td>8</td>
+         <td>1615379885270</td>
+         <td>9560</td>
+         <td>-1</td>
+         <td>QYJ4B46</td>
+      </tr>
+      <tr>
+         <td>1615381332000</td>
+         <td>09637787739</td>
+         <td>1615381230000</td>
+         <td>9588434</td>
+         <td>8</td>
+         <td>1615381351180</td>
+         <td>13890</td>
+         <td>-1</td>
+         <td>PME0900</td>
+      </tr>
+      <tr>
+         <td>1615381563000</td>
+         <td>09637787739</td>
+         <td>1615381502000</td>
+         <td>9588443</td>
+         <td>8</td>
+         <td>1615381599720</td>
+         <td>13890</td>
+         <td>-1</td>
+         <td>PME0900</td>
+      </tr>
+   </table>
 </body>
-</html>  
